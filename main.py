@@ -113,11 +113,18 @@ app = grafo.compile()
 
 async def main():
     print("-" * 55)
-    print("      ASSISTENTE DE TREINADOR")
+    print("     ASSISTENTE DE TREINADOR")
     print("-" * 55)
 
-    print("Digite os Pokémon do adversário(1 a 6), separados por vírgulas: ")
-    adversario = input("EQUIPE ADVERSÁRIA: ->").strip()
+    print("Digite os Pokémon do adversário(1 a 6): ")
+    pokemons = []
+    for i in range (1,7):
+        pokemon = input (f"  ->{i}. ").strip()
+        if not pokemon:
+            break
+        pokemons.append(pokemon)
+
+    adversario =", ".join(pokemons)
 
     print("Você quer algum Pokémon específico no seu time? (deixe em branco para pular)")
     preferencia = input("-> ").strip()
@@ -133,17 +140,17 @@ async def main():
     })
 
     print("\n" + "-" * 55)
-    print("     ANÁLISE DO ADVERSÁRIO")
+    print("     ⚔️ ANÁLISE DO ADVERSÁRIO")
     print("-" * 55)
     print(resultado["analise_adversario"])
 
     print("\n" + "-" * 55)
-    print("     SEU TIME IDEAL")
+    print("     🫱🏼 SEU TIME IDEAL")
     print("-" * 55 )
     print(resultado["time_sugerido"])
 
     print("\n" + "-" * 55)
-    print("     EXPLICAÇÃO E ESTRATÉGIAS")
+    print("     🎯 EXPLICAÇÃO E ESTRATÉGIAS")
     print("-" * 55 )
     print(resultado["explicacao"])
     print("-" * 55 )
